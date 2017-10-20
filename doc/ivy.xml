@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="com.compumark"
+        module="opsi-batch-nordicclosingtrigger" branch="FB_RackSpace">
+	</info>
+	<configurations>
+		<conf name="default" extends="runtime,master"/>
+		<conf name="master" />
+		<conf name="compile" />
+	 	<conf name="runtime" extends="compile" />
+	 	<conf name="sources" />
+	 	<conf name="provided" />
+    <conf name="appclient" />
+	</configurations>
+	<publications>
+		<!-- artifact name="nordicclosingtrigger" conf="master" type="jar" / -->
+		<!-- artifact name="nordicclosingtrigger" conf="sources" type="source" ext="zip" / -->
+	</publications>
+	<dependencies defaultconf="compile->master;runtime->runtime">
+		<dependency org="com.compumark" name="opsi" rev="latest.release" transitive="false" />
+		<dependency org="com.compumark" name="opsi-ejb" rev="latest.release" transitive="false" conf="runtime->runtime" />
+
+		<dependency org="com.compumark" name="command" rev="latest.release" />
+		<dependency org="com.compumark" name="logging" rev="latest.release" />
+		<dependency org="com.compumark" name="messaging" rev="latest.release" transitive="false" />
+		<dependency org="com.compumark" name="trademark" rev="latest.release" transitive="false" />
+		<dependency org="com.compumark" name="util" rev="latest.release" transitive="false" />
+		
+		<dependency org="com.ibm" name="websphere" rev="8.5.5" conf="provided->master" />
+		<dependency org="org.apache" name="commons-lang" rev="2.1" />
+		<dependency org="org.apache" name="commons-collections" rev="3.2.1" />
+    
+    <dependency org="com.ibm" name="appclient" rev="6.1.0.33" conf="appclient->master" />
+
+		<exclude module="bridge2java" />
+		<exclude module="getopt" />
+		<exclude module="java-service-wrapper" />
+
+		<conflict manager="latest-revision" />
+	</dependencies>
+</ivy-module>
